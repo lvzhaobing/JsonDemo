@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "mq_demo",
+            "name": "json_demo",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/mq_demo",
+            "program": "${workspaceFolder}/build/json_demo",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
