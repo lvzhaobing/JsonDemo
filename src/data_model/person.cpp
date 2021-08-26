@@ -8,9 +8,10 @@ Person::Person()
     this->weight = 0;
     this->propertys = map<string, string>();
     this->friends = vector<string>();
+    this->value = nlohmann::json();
 }
 
-Person::Person(string name, int age, float height, float weight, map<string, string> propertys, vector<string> friends)
+Person::Person(string name, int age, float height, float weight, map<string, string> propertys, vector<string> friends, nlohmann::json value)
 
 {
     this->name = name;
@@ -19,6 +20,7 @@ Person::Person(string name, int age, float height, float weight, map<string, str
     this->weight = weight;
     this->propertys = propertys;
     this->friends = friends;
+    this->value = value;
 }
 
 string Person::getName() const
@@ -49,4 +51,9 @@ map<string, string> Person::getPropertys()
 vector<string> Person::getFriends()
 {
     return friends;
+}
+
+nlohmann::json Person::getValue()
+{
+    return value;
 }

@@ -17,10 +17,11 @@ private:
     float weight;
     map<string, string> propertys;
     vector<string> friends;
+    nlohmann::json value;
 
 public:
     Person();
-    Person(string name, int age = 0, float height = 0, float weight = 0, map<string, string> propertys = map<string, string>(), vector<string> friends = vector<string>());
+    Person(string name, int age = 0, float height = 0, float weight = 0, map<string, string> propertys = map<string, string>(), vector<string> friends = vector<string>(), nlohmann::json value = nullptr);
 
     string getName() const;
     int getAge() const;
@@ -28,8 +29,9 @@ public:
     float getWeight() const;
     map<string, string> getPropertys();
     vector<string> getFriends();
+    nlohmann::json getValue();
 
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(Person, name, age, height, weight, propertys, friends);
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE(Person, name, age, height, weight, propertys, friends, value);
 };
 
 #endif //PERSON_H
