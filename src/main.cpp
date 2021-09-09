@@ -11,7 +11,7 @@ using json = nlohmann::json;
 
 int main()
 {
-    Person p = {"Jack", 20, 180, 65, {{"Sex", "Boy"}, {"Favorite", "Coding"}}, {"Bob", "Rose", "Tom"}, 3.14f};
+    Person p = {"Jack", 20, 180, 65, {{"Sex", "Boy"}, {"Favorite", "Coding"}}, {"Bob", "Rose", "Tom"}, {"123", "456"}};
 
     //serialize
     json j = p;
@@ -33,16 +33,8 @@ int main()
     for (int i = 0; i < f.size(); i++)
         cout << "friends: " << f[i] << endl;
 
-    
     auto value = p.getValue();
     cout << "value: " << value << endl;
-
-    auto valueF = p.getValue().get<float>();
-    cout << "value as float: " << valueF << endl;
-
-    auto valueD = p.getValue().get<double>();
-    cout << "value as double: " << valueD << endl;
-    
-
+    cout << "value type: " << value.type_name() << endl;
 
 }
