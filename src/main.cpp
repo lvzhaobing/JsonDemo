@@ -5,13 +5,14 @@
 #include <string>
 #include "nlohmann/json.hpp"
 #include "data_model/person.h"
+#include "data_model/payload_info.h"
 
 using namespace std;
 using json = nlohmann::json;
 
 int main()
 {
-    Person p = {"Jack", 20, 180, 65, {{"Sex", "Boy"}, {"Favorite", "Coding"}}, {"Bob", "Rose", "Tom"}, {"123", "456"}};
+    Person p = {"Jack", 20, 180, 65, {{"Sex", "Boy"}, {"Favorite", "Coding"}}, {"Bob", "Rose", "Tom"}, 123};
 
     //serialize
     json j = p;
@@ -20,21 +21,9 @@ int main()
     //change property
     j["height"] = 160.0f;
 
+
+    auto jj = json::parse("{\"value\": 123, \"valid\": true, \"unit\": \"\", \"relative\": false, \"time\": 0, \"extension\": null}");
     //deserialize
-    p = j.get<Person>();
-    cout << "height: " << p.getHeight() << endl;
-
-    auto props = p.getPropertys();
-    map<string, string>::iterator iter;
-    for (iter = props.begin(); iter != props.end(); iter++)
-        cout << iter->first << " -> " << iter->second << endl;
-
-    auto f = p.getFriends();
-    for (int i = 0; i < f.size(); i++)
-        cout << "friends: " << f[i] << endl;
-
-    auto value = p.getValue();
-    cout << "value: " << value << endl;
-    cout << "value type: " << value.type_name() << endl;
-
+    PayloadInfo payload = jj.get<PayloadInfo>();
+    cout << (payload.value == 123 ? "TRUE" : "FALSE") << endl;
 }

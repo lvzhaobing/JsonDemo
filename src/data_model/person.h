@@ -8,30 +8,34 @@
 
 using namespace std;
 
-class Person
+struct Person
 {
-private:
     string name;
     int age;
     float height;
     float weight;
     map<string, string> propertys;
     vector<string> friends;
-    nlohmann::json value;
+    nlohmann::json custom;
 
-public:
-    Person();
-    Person(string name, int age = 0, float height = 0, float weight = 0, map<string, string> propertys = map<string, string>(), vector<string> friends = vector<string>(), nlohmann::json value = nullptr);
+    Person(string _name,
+     int _age = 0,
+     float _height = 0,
+     float _weight = 0,
+     map<string, string> _propertys = map<string, string>(),
+     vector<string> _friends = vector<string>(),
+     nlohmann::json _custom = nullptr)
+    {
+        name = _name;
+        age = _age;
+        height = _height;
+        weight = _weight;
+        propertys = _propertys;
+        friends = _friends;
+        custom = _custom;
+    }
 
-    string getName() const;
-    int getAge() const;
-    float getHeight() const;
-    float getWeight() const;
-    map<string, string> getPropertys();
-    vector<string> getFriends();
-    nlohmann::json getValue();
-
-    NLOHMANN_DEFINE_TYPE_INTRUSIVE(Person, name, age, height, weight, propertys, friends, value);
+    NLOHMANN_DEFINE_TYPE_INTRUSIVE(Person, name, age, height, weight, propertys, friends, custom);
 };
 
 #endif //PERSON_H

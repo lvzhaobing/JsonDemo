@@ -9,11 +9,9 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(SOURCE_DIR src)
 set(INCLUDE_DIR ${SOURCE_DIR}/include)
-set(DATAMODEL_DIR ${SOURCE_DIR}/data_model)
 
 file(GLOB SOURCE_FILE 
     ${SOURCE_DIR}/*.cpp
-    ${DATAMODEL_DIR}/*.cpp
 )
 
 include_directories(
