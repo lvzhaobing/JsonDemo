@@ -6,25 +6,23 @@
 #include <string>
 #include "nlohmann/json.hpp"
 
-using namespace std;
-
 struct Person
 {
-    string name;
+    std::string name;
     int age;
     float height;
     float weight;
-    map<string, string> propertys;
-    vector<string> friends;
+    std::map<std::string, std::string> propertys;
+    std::vector<std::string> friends;
     nlohmann::json custom;
 
-    Person(string _name,
-     int _age = 0,
-     float _height = 0,
-     float _weight = 0,
-     map<string, string> _propertys = map<string, string>(),
-     vector<string> _friends = vector<string>(),
-     nlohmann::json _custom = nullptr)
+    Person(std::string _name = "",
+        int _age = 0,
+        float _height = 0,
+        float _weight = 0,
+        std::map<std::string, std::string> _propertys = std::map<std::string, std::string>(),
+        std::vector<std::string> _friends = std::vector<std::string>(),
+        nlohmann::json _custom = nullptr)
     {
         name = _name;
         age = _age;

@@ -22,8 +22,10 @@ int main()
     j["height"] = 160.0f;
 
 
-    auto jj = json::parse("{\"value\": 123, \"valid\": true, \"unit\": \"\", \"relative\": false, \"time\": 0, \"extension\": null}");
+    j = json::parse("{\"value\": 123, \"valid\": true, \"unit\": \"\", \"relative\": false, \"time\": 0, \"extension\": null}");
     //deserialize
-    PayloadInfo payload = jj.get<PayloadInfo>();
+    PayloadInfo payload = j.get<PayloadInfo>();
     cout << (payload.value == 123 ? "TRUE" : "FALSE") << endl;
+
+    PayloadInfo info = {};
 }
